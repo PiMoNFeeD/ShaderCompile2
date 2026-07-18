@@ -278,7 +278,7 @@ void Parser::WriteInclude( const fs::path& fileName, const std::string& name, co
 					file << "\t\tm_b"sv << c.name << " = false;\n"sv;
 			if ( hasIfdef )
 				file << "#endif\t// _DEBUG\n"sv;
-			file << "\t}\n\n\tint GetIndex() const\n\t{\n"sv;
+			file << "\t}\n\n\tunsigned int GetIndex() const\n\t{\n"sv;
 			if ( vars.empty() )
 				file << "\t\treturn 0;\n"sv;
 			else
