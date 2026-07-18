@@ -106,7 +106,6 @@ rem echo %inputbase%
 rem echo --------------------------------
 REM make sure that target dirs exist
 REM files will be built in these targets and copied to their final destination
-if not exist include mkdir include
 if not exist %shaderDir% mkdir %shaderDir%
 if not exist %shaderDir%\fxc mkdir %shaderDir%\fxc
 REM Nuke some files that we will add to later.

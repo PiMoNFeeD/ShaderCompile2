@@ -1200,7 +1200,7 @@ static std::unique_ptr<CfgProcessor::CfgEntryInfo[]> Shared_ParseListOfCompileCo
 			failed = true;
 			continue;
 		}
-		Parser::WriteInclude( g_pShaderPath / "include"sv / ( name + ".inc" ), name, file.target, conf.static_c, conf.dynamic_c, conf.skip, isCSGO );
+		Parser::WriteInclude( g_pShaderPath / "fxctmp9"sv / ( name + ".inc" ), name, file.target, conf.static_c, conf.dynamic_c, conf.skip, isCSGO );
 		conf.name = std::move( name );
 		conf.crc32 = crc;
 		conf.target = file.target;
@@ -1706,7 +1706,7 @@ int main( int argc, const char* argv[] )
 				failed = true;
 			}
 			const std::string name = Parser::ConstructName( file.name, file.target, file.version );
-			Parser::WriteInclude( g_pShaderPath / "include"sv / ( name + ".inc" ), name, file.target, conf.static_c, conf.dynamic_c, conf.skip, isCSGO );
+			Parser::WriteInclude( g_pShaderPath / "fxctmp9"sv / ( name + ".inc" ), name, file.target, conf.static_c, conf.dynamic_c, conf.skip, isCSGO );
 		}
 		return failed ? -1 : 0;
 	}
