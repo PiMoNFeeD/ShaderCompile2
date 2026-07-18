@@ -1442,7 +1442,7 @@ static constexpr const char* const validTypes[] =
 
 static constexpr const char* const validModels[] =
 {
-	"20b", "30", "40", "41", "50", "51"
+	"20", "20b", "30", "40", "41", "50", "51"
 };
 
 int main( int argc, const char* argv[] )

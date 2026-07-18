@@ -6,13 +6,34 @@ param (
     [Parameter(Mandatory=$false)][System.UInt32]$Threads
 )
 
-if ($Version -notin @("20b", "30", "40", "41", "50", "51")) {
+$versionList = @("20", "20b", "30", "40", "41", "50", "51")
+$versionIndex = [array]::IndexOf($versionList, $Version)
+
+if ($versionIndex -lt 0) {
 	return
+}
+
+function CheckFileVersion {
+	param (
+		[string]$file
+	)
+
+	for ( $i = 0; $i -lt $versionList.Length; $i++ ) {
+		if ( $file.EndsWith( $versionList[$i], [System.StringComparison]::OrdinalIgnoreCase ) ) {
+			return ($versionIndex -ge $i)
+		}
+	}
+
+	return $true
 }
 
 $fileList = $File.OpenText()
 while ($null -ne ($line = $fileList.ReadLine())) {
 	if ($line -match '^\s*$' -or $line -match '^\s*//') {
+		continue
+	}
+
+	if ( !(CheckFileVersion -file ([System.IO.Path]::GetFileNameWithoutExtension( $line ))) ) {
 		continue
 	}
 

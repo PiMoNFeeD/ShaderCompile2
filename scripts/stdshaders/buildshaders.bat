@@ -33,8 +33,12 @@ set inputbase=%1
 REM ignore -dx9_30
 if /i "%6" == "-dx9_30" shift /6
 
+if /i "%6" == "-force2b" goto set_force2b_arg
 if /i "%6" == "-force30" goto set_force30_arg
 goto set_force_end
+:set_force2b_arg
+			set IS2b=1
+			goto set_force_end
 :set_force30_arg
 			set IS30=1
 			goto set_force_end
@@ -110,7 +114,10 @@ if not exist %shaderDir% mkdir %shaderDir%
 if not exist %shaderDir%\fxc mkdir %shaderDir%\fxc
 REM Nuke some files that we will add to later.
 
+set SHVER=20
+if defined IS2b (
 set SHVER=20b
+)
 if defined IS30 (
 	set SHVER=30
 )
